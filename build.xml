@@ -3,7 +3,7 @@
     xmlns:unless="ant:unless">
     
 	<loadproperties srcFile="DESCRIPTION" />
-	<property name="tarfile" value="Rclean_${Version}.tar.gz" />
+	<property name="tarfile" value="provClean_${Version}.tar.gz" />
 
  	<target name="roxygenize">
     	<exec executable="Rscript" >
@@ -36,7 +36,7 @@
     </target>
 
     <target name="clean">
-        <delete dir="Rclean.Rcheck" verbose="false"/>
+        <delete dir="provClean.Rcheck" verbose="false"/>
         <delete file="${tarfile}" verbose="false"/>
     </target>
 
