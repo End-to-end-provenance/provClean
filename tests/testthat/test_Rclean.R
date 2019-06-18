@@ -1,5 +1,5 @@
 context("Provenance capture")
-library(Rclean)
+library(provClean)
 library(formatR)
 library(utils)
 

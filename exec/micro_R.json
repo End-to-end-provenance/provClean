@@ -19,11 +19,11 @@
 			"rdt:name": "micro.R",
 			"rdt:type": "Start",
 			"rdt:elapsedTime": 2.133,
-			"rdt:scriptNum": "NA",
-			"rdt:startLine": "NA",
-			"rdt:startCol": "NA",
-			"rdt:endLine": "NA",
-			"rdt:endCol": "NA"
+			"rdt:scriptNum": NA,
+			"rdt:startLine": NA,
+			"rdt:startCol": NA,
+			"rdt:endLine": NA,
+			"rdt:endCol": NA
 		},
 		"rdt:p2": {
 			"rdt:name": "x <- 1",
@@ -139,11 +139,11 @@
 			"rdt:name": "micro.R",
 			"rdt:type": "Finish",
 			"rdt:elapsedTime": 2.295,
-			"rdt:scriptNum": "NA",
-			"rdt:startLine": "NA",
-			"rdt:startCol": "NA",
-			"rdt:endLine": "NA",
-			"rdt:endCol": "NA"
+			"rdt:scriptNum": NA,
+			"rdt:startLine": NA,
+			"rdt:startCol": NA,
+			"rdt:endLine": NA,
+			"rdt:endCol": NA
 		}
 	},
 
