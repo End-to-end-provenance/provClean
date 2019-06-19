@@ -108,6 +108,10 @@ clean.prov <- function (prov, result = NULL,
         # Look in the current directory 
         script.file <- basename(script.file)
         if (!file.exists (script.file)) {
+          # Look in provClean's testscripts directory
+          script.file <- system.file("testscripts", script.file, package="provClean")
+        }
+        if (script.file == "") {
           stop("No scripts matching current provenance.")
         }
       }
