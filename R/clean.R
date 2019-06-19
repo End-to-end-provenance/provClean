@@ -88,21 +88,30 @@ clean.prov <- function (prov, result = NULL,
     }
     
     # Load the provenance graph
+    prov.parsed <- provParseR::prov.parse(prov, isFile)
     prov.graph <- provGraphR::create.graph (prov, isFile)
     if (is.null (prov.graph)) {
       stop ("The provenance could not be parsed.")
     }
 
     ## Get the saved copy of the script
+<<<<<<< HEAD
     parsed.prov <- provParseR::prov.parse(prov, isFile)
     saved.script.file <- provParseR::get.saved.scripts(parsed.prov)$script[1]
+=======
+    saved.script.file <- provParseR::get.saved.scripts(prov.parsed)$script[1]
+>>>>>>> refs/remotes/origin/dev
     if (file.exists (saved.script.file)) {
       script.file <- saved.script.file
     }
     
     # If the saved copy does not exist, use the original script if it exists.
     else {
+<<<<<<< HEAD
       script.file <- provParseR::get.scripts(parsed.prov)$script[1]
+=======
+      script.file <- provParseR::get.scripts(prov.parsed)$script[1]
+>>>>>>> refs/remotes/origin/dev
       if (!file.exists (script.file)) {
         # Look in the current directory 
         script.file <- basename(script.file)
@@ -116,10 +125,18 @@ clean.prov <- function (prov, result = NULL,
     
     ## Get result options
     ## Output files
+<<<<<<< HEAD
     result.files <- provParseR::get.output.files(parsed.prov)$name
+=======
+    result.files <- provParseR::get.output.files(prov.parsed)$name
+>>>>>>> refs/remotes/origin/dev
     
     ## Get objects for suggested results    
+<<<<<<< HEAD
     result.obj <- provParseR::get.variables.set(parsed.prov)$name
+=======
+    result.obj <- provParseR::get.variables.set(prov.parsed)$name
+>>>>>>> refs/remotes/origin/dev
     
     ## Combine vectors
     result.opts <- list(Files = unique(result.files), Objects = unique(result.obj))
@@ -131,7 +148,11 @@ clean.prov <- function (prov, result = NULL,
     }
     else {
         ## Get the node that matches the result name
+<<<<<<< HEAD
         data.nodes <- provParseR::get.data.nodes(parsed.prov)
+=======
+        data.nodes <- provParseR::get.data.nodes(prov.parsed)
+>>>>>>> refs/remotes/origin/dev
         matching.data.nodes <- data.nodes[data.nodes$name == result, ]
         node.id <- utils::tail(n = 1, matching.data.nodes$id)
         
@@ -142,7 +163,11 @@ clean.prov <- function (prov, result = NULL,
         
         ## Get the line numbers from the original source code
         spine.proc.node.ids <- grep ("p", spine, value = TRUE)
+<<<<<<< HEAD
         proc.nodes <- provParseR::get.proc.nodes(parsed.prov)
+=======
+        proc.nodes <- provParseR::get.proc.nodes(prov.parsed)
+>>>>>>> refs/remotes/origin/dev
         spine.proc.nodes <- proc.nodes [proc.nodes$id %in% spine.proc.node.ids, ]
         lines <- spine.proc.nodes[ , grep("Line", colnames(spine.proc.nodes))]
         
@@ -203,7 +228,11 @@ clean.script <- function (r.script, result = NULL, tidy = TRUE, ...) {
       tool <- "rdt"
     }
     else {
+<<<<<<< HEAD
       stop ("One of rdtLite or rdt must be installed.")
+=======
+      stop ("One of rdt or rdtLite must be installed.")
+>>>>>>> refs/remotes/origin/dev
     }
   }
   if (tool == "rdt") {
