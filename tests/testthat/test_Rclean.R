@@ -1,5 +1,5 @@
 context("Provenance capture")
-library(Rclean)
+library(provClean)
 library(formatR)
 library(utils)
 
@@ -7,7 +7,7 @@ context ("No provenance in options")
 expect_error (clean())
 
 ## Loading test data
-test.dat.loc <- system.file("exec", "micro_R.json", package="Rclean")
+test.dat.loc <- system.file("testdata", "micro.json", package="provClean")
 options(prov.json = readLines(test.dat.loc))
 
 context("Code cleaning: initiate")
@@ -54,7 +54,7 @@ expect_match(micro.result.x.test[3] , "x <- x \\+ y")
 
 
 context ("Using R script")
-test.script.loc <- system.file("exec", "micro.R", package="Rclean")
+test.script.loc <- system.file("testscripts", "micro.R", package="provClean")
 micro.result.x.test <- clean.script (test.script.loc, result="x")
 expect_match(micro.result.x.test[1] , "x <- 1")
 expect_match(micro.result.x.test[2] , "y <- 3")
@@ -63,7 +63,7 @@ expect_match(micro.result.x.test[3] , "x <- x \\+ y")
 
 # No files in provenance
 context ("No files")
-nofiles.dat.loc <- system.file("exec", "SuperSimple.json", package="Rclean")
+nofiles.dat.loc <- system.file("testdata", "SuperSimple.json", package="provClean")
 nofiles.test <- clean.prov (nofiles.dat.loc)
 expect_equal(length(nofiles.test), 2)
 expect_match(mode(nofiles.test), "list")
@@ -73,7 +73,7 @@ expect_equal (length (nofiles.test$Files), 0)
 
 # Multi-line statements
 context("Multi-line statement")
-lines.dat.loc <- system.file("exec", "Lines.json", package="Rclean")
+lines.dat.loc <- system.file("testdata", "Lines.json", package="provClean")
 lines.result.cc.test <- clean.prov (lines.dat.loc, "cc")
 expect_equal(length(lines.result.cc.test), 2)
 expect_match(lines.result.cc.test[1] , "d <- 4")
@@ -95,12 +95,12 @@ context ("Error checking")
 expect_warning (clean (c ("x", "y")))
 
 # Input is not provenance
-error.dat.loc <- system.file("exec", "micro.R", package="Rclean")
+error.dat.loc <- system.file("testscripts", "micro.R", package="provClean")
 options(prov.json = readLines(error.dat.loc))
 expect_error (clean())
 
 # Script cannot be found
-noscript.dat.loc <- system.file("exec", "prov.json", package="Rclean")
+noscript.dat.loc <- system.file("testdata", "prov.json", package="provClean")
 options(prov.json = readLines(noscript.dat.loc))
 expect_error (clean())
 

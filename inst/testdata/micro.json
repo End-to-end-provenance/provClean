@@ -1,24 +1,22 @@
 {
 	"prefix": {
 		"prov": "http://www.w3.org/ns/prov#",
-		"rdt": "http://rdatatracker.org/"
+		"rdt": "https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md"
 	},
 
 	"agent" : {
-		// agent: this json file and the tool that produced this
 		"rdt:a1": {
-			"rdt:tool.name": "RDataTracker",
-			"rdt:tool.version": "3.0.1",
-			"rdt:json.version": "2.1"
+			"rdt:tool.name": "rdtLite",
+			"rdt:tool.version": "1.1.1",
+			"rdt:json.version": "2.2"
 		}
 	},
 
 	"activity" : {
-		// procedure nodes
 		"rdt:p1": {
 			"rdt:name": "micro.R",
 			"rdt:type": "Start",
-			"rdt:elapsedTime": 0.986,
+			"rdt:elapsedTime": "0.785",
 			"rdt:scriptNum": "NA",
 			"rdt:startLine": "NA",
 			"rdt:startCol": "NA",
@@ -28,8 +26,8 @@
 		"rdt:p2": {
 			"rdt:name": "x <- 1",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.003,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.051",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 1,
 			"rdt:startCol": 1,
 			"rdt:endLine": 1,
@@ -38,8 +36,8 @@
 		"rdt:p3": {
 			"rdt:name": "y <- 3",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.01,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.007",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 2,
 			"rdt:startCol": 1,
 			"rdt:endLine": 2,
@@ -48,8 +46,8 @@
 		"rdt:p4": {
 			"rdt:name": "10",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.019,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.004",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 3,
 			"rdt:startCol": 1,
 			"rdt:endLine": 3,
@@ -58,8 +56,8 @@
 		"rdt:p5": {
 			"rdt:name": "x",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.02,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.001",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 4,
 			"rdt:startCol": 1,
 			"rdt:endLine": 4,
@@ -68,8 +66,8 @@
 		"rdt:p6": {
 			"rdt:name": "x <- x + y",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.023,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.003",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 5,
 			"rdt:startCol": 1,
 			"rdt:endLine": 5,
@@ -78,8 +76,8 @@
 		"rdt:p7": {
 			"rdt:name": "x",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.034,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.007",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 6,
 			"rdt:startCol": 1,
 			"rdt:endLine": 6,
@@ -88,8 +86,8 @@
 		"rdt:p8": {
 			"rdt:name": "y^3",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.038,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.002",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 7,
 			"rdt:startCol": 1,
 			"rdt:endLine": 7,
@@ -98,8 +96,8 @@
 		"rdt:p9": {
 			"rdt:name": "write.csv(x, \"~/test.test\")",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.064,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.011",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 8,
 			"rdt:startCol": 1,
 			"rdt:endLine": 8,
@@ -108,8 +106,8 @@
 		"rdt:p10": {
 			"rdt:name": "pdf(\"~/test.pdf\")",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.12,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.062",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 10,
 			"rdt:startCol": 1,
 			"rdt:endLine": 10,
@@ -118,8 +116,8 @@
 		"rdt:p11": {
 			"rdt:name": "plot(x)",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.131,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.008",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 11,
 			"rdt:startCol": 1,
 			"rdt:endLine": 11,
@@ -128,8 +126,8 @@
 		"rdt:p12": {
 			"rdt:name": "dev.off()",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": 1.139,
-			"rdt:scriptNum": 0,
+			"rdt:elapsedTime": "0.006",
+			"rdt:scriptNum": 1,
 			"rdt:startLine": 12,
 			"rdt:startCol": 1,
 			"rdt:endLine": 12,
@@ -138,7 +136,7 @@
 		"rdt:p13": {
 			"rdt:name": "micro.R",
 			"rdt:type": "Finish",
-			"rdt:elapsedTime": 1.146,
+			"rdt:elapsedTime": "0.006",
 			"rdt:scriptNum": "NA",
 			"rdt:startLine": "NA",
 			"rdt:startCol": "NA",
@@ -148,7 +146,6 @@
 	},
 
 	"entity" : {
-		// data nodes
 		"rdt:d1": {
 			"rdt:name": "x",
 			"rdt:value": "1",
@@ -190,7 +187,7 @@
 			"rdt:scope": "undefined",
 			"rdt:fromEnv": false,
 			"rdt:hash": "2de496f0f6f095ea92c0ce6c25fbbff8",
-			"rdt:timestamp": "2018-09-20T14.16.56EDT",
+			"rdt:timestamp": "2019-06-19T11.19.52EDT",
 			"rdt:location": "/Users/blerner/test.test"
 		},
 		"rdt:d5": {
@@ -223,31 +220,30 @@
 			"rdt:scope": "undefined",
 			"rdt:fromEnv": false,
 			"rdt:hash": "644fd36b21b6251183a039add563f60b",
-			"rdt:timestamp": "2018-09-20T14.16.56EDT",
+			"rdt:timestamp": "2019-06-19T11.19.52EDT",
 			"rdt:location": "/Users/blerner/test.pdf"
 		},
 
-		// environment
 		"rdt:environment": {
 			"rdt:name": "environment",
 			"rdt:architecture": "x86_64",
 			"rdt:operatingSystem": "darwin15.6.0",
 			"rdt:language": "R",
-			"rdt:langVersion": "R version 3.5.1 (2018-07-02)",
-			"rdt:script": "/Users/blerner/git/Rclean/exec/micro.R",
-			"rdt:scriptTimeStamp": "2018-05-24T14.07.35EDT",
+			"rdt:langVersion": "R version 3.6.0 (2019-04-26)",
+			"rdt:script": "/Users/blerner/Documents/Process/DataProvenance/workspace/provClean/inst/testscripts/micro.R",
+			"rdt:scriptTimeStamp": "2019-02-03T11.43.55EST",
+			"rdt:totalElapsedTime": "0.953",
 			"rdt:sourcedScripts": "",
 			"rdt:sourcedScriptTimeStamps": "",
-			"rdt:workingDirectory": "/Users/blerner/git/Rclean/exec",
-			"rdt:ddgDirectory": "/Users/blerner/git/Rclean/exec/prov_micro",
-			"rdt:ddgTimeStamp": "2018-09-20T14.16.55EDT",
+			"rdt:workingDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provClean/inst/testscripts",
+			"rdt:provDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provClean/inst/testscripts/prov_micro",
+			"rdt:provTimestamp": "2019-06-19T11.19.51EDT",
 			"rdt:hashAlgorithm": "md5"
 		},
 
-		// library nodes - prov collections
 		"rdt:l1": {
 			"name": "base",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
@@ -255,7 +251,7 @@
 		},
 		"rdt:l2": {
 			"name": "datasets",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
@@ -263,7 +259,7 @@
 		},
 		"rdt:l3": {
 			"name": "ggplot2",
-			"version": "3.0.0",
+			"version": "3.1.1",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
@@ -271,7 +267,7 @@
 		},
 		"rdt:l4": {
 			"name": "graphics",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
@@ -279,7 +275,7 @@
 		},
 		"rdt:l5": {
 			"name": "grDevices",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
@@ -287,46 +283,29 @@
 		},
 		"rdt:l6": {
 			"name": "methods",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
 			}
 		},
 		"rdt:l7": {
-			"name": "provViz",
-			"version": "1.0.1",
+			"name": "stats",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
 			}
 		},
 		"rdt:l8": {
-			"name": "RDataTracker",
-			"version": "3.0.1",
-			"prov:type": {
-				"$": "prov:Collection",
-				"type": "xsd:QName"
-			}
-		},
-		"rdt:l9": {
-			"name": "stats",
-			"version": "3.5.1",
-			"prov:type": {
-				"$": "prov:Collection",
-				"type": "xsd:QName"
-			}
-		},
-		"rdt:l10": {
 			"name": "utils",
-			"version": "3.5.1",
+			"version": "3.6.0",
 			"prov:type": {
 				"$": "prov:Collection",
 				"type": "xsd:QName"
 			}
 		},
 
-		// function nodes
 		"rdt:f1": {
 			"name": "write.csv"
 		},
@@ -342,7 +321,6 @@
 	},
 
 	"wasInformedBy" : {
-		// procedure-to-procedure edges
 		"rdt:pp1": {
 			"prov:informant": "rdt:p1",
 			"prov:informed": "rdt:p2"
@@ -394,7 +372,6 @@
 	},
 
 	"wasGeneratedBy" : {
-		// procedure-to-data edges
 		"rdt:pd1": {
 			"prov:activity": "rdt:p2",
 			"prov:entity": "rdt:d1"
@@ -426,7 +403,6 @@
 	},
 
 	"used" : {
-		// data-to-procedure edges
 		"rdt:dp1": {
 			"prov:entity": "rdt:d1",
 			"prov:activity": "rdt:p5"
@@ -464,7 +440,6 @@
 			"prov:activity": "rdt:p12"
 		},
 
-		// function-to-procedure edges
 		"rdt:fp1": {
 			"prov:entity": "rdt:f1",
 			"prov:activity": "rdt:p9"
@@ -484,7 +459,6 @@
 	},
 
 	"hadMember" : {
-		// groups function nodes with their library nodes
 		"rdt:m1": {
 			"prov:collection": "rdt:l4",
 			"prov:entity": "rdt:f3"
@@ -498,7 +472,7 @@
 			"prov:entity": "rdt:f4"
 		},
 		"rdt:m4": {
-			"prov:collection": "rdt:l10",
+			"prov:collection": "rdt:l8",
 			"prov:entity": "rdt:f1"
 		}
 	}

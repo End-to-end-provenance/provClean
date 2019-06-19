@@ -34,12 +34,12 @@
 #'
 #' clean.prov takes as input the name of a file containing provenance,
 #' or a string containing the provenance directly.  The provenance 
-#' should have been previously collected by provR or RDataTracker.
+#' should have been previously collected by rdtLite or rdt.
 #'
-#' clean.script uses one of RDataTracker or provR to collect the provenance.  If only one of 
+#' clean.script uses one of rdt or rdtLite to collect the provenance.  If only one of 
 #' these is currently loaded, it will use that tool.  If they are both loaded, it will 
-#' use provR.  If neither is loaded, it then looks to see if either is installed,
-#' again preferring provR to RDataTracker if they are both installed.
+#' use rdtLite.  If neither is loaded, it then looks to see if either is installed,
+#' again preferring rdtLite to rdt if they are both installed.
 #' 
 #'@param result A desired output present in the script.  This should be either a
 #'  variable set in your script, or a file output by the script.  If omitted,
@@ -94,14 +94,15 @@ clean.prov <- function (prov, result = NULL,
     }
 
     ## Get the saved copy of the script
-    saved.script.file <- provParseR::get.saved.scripts()$script[1]
+    parsed.prov <- provParseR::prov.parse(prov, isFile)
+    saved.script.file <- provParseR::get.saved.scripts(parsed.prov)$script[1]
     if (file.exists (saved.script.file)) {
       script.file <- saved.script.file
     }
     
     # If the saved copy does not exist, use the original script if it exists.
     else {
-      script.file <- provParseR::get.scripts()$script[1]
+      script.file <- provParseR::get.scripts(parsed.prov)$script[1]
       if (!file.exists (script.file)) {
         # Look in the current directory 
         script.file <- basename(script.file)
@@ -115,10 +116,10 @@ clean.prov <- function (prov, result = NULL,
     
     ## Get result options
     ## Output files
-    result.files <- provParseR::get.output.files()$name
+    result.files <- provParseR::get.output.files(parsed.prov)$name
     
     ## Get objects for suggested results    
-    result.obj <- provParseR::get.variables.set()$name
+    result.obj <- provParseR::get.variables.set(parsed.prov)$name
     
     ## Combine vectors
     result.opts <- list(Files = unique(result.files), Objects = unique(result.obj))
@@ -130,7 +131,7 @@ clean.prov <- function (prov, result = NULL,
     }
     else {
         ## Get the node that matches the result name
-        data.nodes <- provParseR::get.data.nodes()
+        data.nodes <- provParseR::get.data.nodes(parsed.prov)
         matching.data.nodes <- data.nodes[data.nodes$name == result, ]
         node.id <- utils::tail(n = 1, matching.data.nodes$id)
         
@@ -141,7 +142,7 @@ clean.prov <- function (prov, result = NULL,
         
         ## Get the line numbers from the original source code
         spine.proc.node.ids <- grep ("p", spine, value = TRUE)
-        proc.nodes <- provParseR::get.proc.nodes()
+        proc.nodes <- provParseR::get.proc.nodes(parsed.prov)
         spine.proc.nodes <- proc.nodes [proc.nodes$id %in% spine.proc.node.ids, ]
         lines <- spine.proc.nodes[ , grep("Line", colnames(spine.proc.nodes))]
         
@@ -187,31 +188,31 @@ clean.prov <- function (prov, result = NULL,
 clean.script <- function (r.script, result = NULL, tidy = TRUE, ...) {
   # Determine which provenance collector to use
   loaded <- loadedNamespaces()
-  if ("provR" %in% loaded) {
+  if ("rdtLite" %in% loaded) {
     tool <- "provr"
   }
-  else if ("RDataTracker" %in% loaded) {
+  else if ("rdt" %in% loaded) {
     tool <- "rdt"
   }
   else {
     installed <- utils::installed.packages ()
-    if ("provR" %in% installed) {
+    if ("rdtLite" %in% installed) {
       tool <- "provr"
     }
-    else if ("RDataTracker" %in% installed) {
+    else if ("rdt" %in% installed) {
       tool <- "rdt"
     }
     else {
-      stop ("One of provR or RDataTracker must be installed.")
+      stop ("One of rdtLite or rdt must be installed.")
     }
   }
   if (tool == "rdt") {
-    prov.run <- RDataTracker::prov.run
-    prov.dir <- RDataTracker::prov.dir
+    prov.run <- rdt::prov.run
+    prov.dir <- rdt::prov.dir
   }
   else {
-    prov.run <- provR::prov.run
-    prov.dir <- provR::prov.dir
+    prov.run <- rdtLite::prov.run
+    prov.dir <- rdtLite::prov.dir
   }
   
   # Run the script, collecting provenance, if a script was provided.

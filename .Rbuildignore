@@ -8,3 +8,7 @@ cleanR_demo_vid.png
 .project
 build.xml
 Rclean_demo.png
+^data
+^exec
+.*\.Rcheck
+.*\.tar\.gz

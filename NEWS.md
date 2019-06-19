@@ -1,3 +1,5 @@
-# Rclean 1.0.1
+# provClean 1.0
 
-* Added functions clean.prov and clean.script.
+* Derived from Rclean 1.0.1
+* Uses provenance created by rdt or rdtLite
+

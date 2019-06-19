@@ -3,7 +3,7 @@
     xmlns:unless="ant:unless">
     
 	<loadproperties srcFile="DESCRIPTION" />
-	<property name="tarfile" value="Rclean_${Version}.tar.gz" />
+	<property name="tarfile" value="provClean_${Version}.tar.gz" />
 
  	<target name="roxygenize">
     	<exec executable="Rscript" >
@@ -29,14 +29,45 @@
 		</exec>
     </target>
     
-    <target name="cran-check" depends="build">
+    <target name="install-no-check">
+        <exec executable="R" >
+  			<arg line="CMD INSTALL ${tarfile}"/>
+		</exec>
+    </target>
+    
+	<target name="create-json">
+		<antcall target="json">
+			<param name="theFile" value="Lines.R"/>
+		</antcall>
+		<antcall target="json">
+			<param name="theFile" value="messycode.R"/>
+		</antcall>
+		<antcall target="json">
+			<param name="theFile" value="micro.R"/>
+		</antcall>
+		<antcall target="json">
+			<param name="theFile" value="SuperSimple.R"/>
+		</antcall>
+	</target>
+	
+	<target name="json">
+		<echo message="${theFile}"/>
+		<exec executable="Rscript" dir="inst/testscripts">
+			<arg line="-e &quot;rdtLite::prov.run('${theFile}', prov.dir='.')&quot;"/>
+		</exec>
+		<basename property="scriptname" file="${theFile}" suffix="R" />
+		<move file="inst/testscripts/prov_${scriptname}/prov.json" tofile="inst/testdata/${scriptname}.json" />
+		<delete dir="inst/testscripts/prov_${scriptname}" />
+	</target>
+
+    <target name="cran-check" depends="build, create-json">
     	<exec executable="R" >
     		<arg line="CMD check --as-cran --no-vignettes --no-build-vignettes ${tarfile}"/>
     	</exec>
     </target>
 
     <target name="clean">
-        <delete dir="Rclean.Rcheck" verbose="false"/>
+        <delete dir="provclean.Rcheck" verbose="false"/>
         <delete file="${tarfile}" verbose="false"/>
     </target>
 
