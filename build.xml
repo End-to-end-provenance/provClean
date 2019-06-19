@@ -38,26 +38,34 @@
 	<target name="create-json">
 		<antcall target="json">
 			<param name="theFile" value="Lines.R"/>
+			<param name="scriptDir" value="inst/testscripts"/>
+			<param name="jsonDir" value="inst/testdata"/>
 		</antcall>
 		<antcall target="json">
 			<param name="theFile" value="messycode.R"/>
+			<param name="scriptDir" value="inst/example"/>
+			<param name="jsonDir" value="inst/example"/>
 		</antcall>
 		<antcall target="json">
 			<param name="theFile" value="micro.R"/>
+			<param name="scriptDir" value="inst/testscripts"/>
+			<param name="jsonDir" value="inst/testdata"/>
 		</antcall>
 		<antcall target="json">
 			<param name="theFile" value="SuperSimple.R"/>
+			<param name="scriptDir" value="inst/testscripts"/>
+			<param name="jsonDir" value="inst/testdata"/>
 		</antcall>
 	</target>
 	
 	<target name="json">
 		<echo message="${theFile}"/>
-		<exec executable="Rscript" dir="inst/testscripts">
+		<exec executable="Rscript" dir="${scriptDir}">
 			<arg line="-e &quot;rdtLite::prov.run('${theFile}', prov.dir='.')&quot;"/>
 		</exec>
 		<basename property="scriptname" file="${theFile}" suffix="R" />
-		<move file="inst/testscripts/prov_${scriptname}/prov.json" tofile="inst/testdata/${scriptname}.json" />
-		<delete dir="inst/testscripts/prov_${scriptname}" />
+		<move file="${scriptDir}/prov_${scriptname}/prov.json" tofile="${jsonDir}/${scriptname}.json" />
+		<delete dir="${scriptDir}/prov_${scriptname}" />
 	</target>
 
     <target name="cran-check" depends="build, create-json">

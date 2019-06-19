@@ -19,11 +19,11 @@ myfunc <- function(x){
 ### Read data from some random file path
 ### Here, a relative path is being used, but
 ### typically, file paths are given from root.
-data.16 <- read.csv("../example/projects/2016/july_biomass_survey.csv")
+data.16 <- read.csv("projects/2016/july_biomass_survey.csv")
 
 ### Some datasets are loaded and no longer used.
 ### Like this one
-data.16.2 <- read.csv('../example/projects/data_forestplot/dataset_v2_june_from_collaborator1.csv')
+data.16.2 <- read.csv('projects/data_forestplot/dataset_v2_june_from_collaborator1.csv')
 
 ### Create a bunch of intermediate objects
 data.v1.1to4 <- data.16[,1:4]
@@ -58,12 +58,12 @@ for (i in 1:ncol(data.v1.1to4)){
 }
 
 ### write some data to file
-write.csv(data.v1.1to4,'../example/projects/data_forestplot/save1.csv',row.names = F)
+write.csv(data.v1.1to4,'projects/data_forestplot/save1.csv',row.names = F)
 
 
 ### write lm and anova output to file
-capture.output(lm.summary.1, file="../example/projects/lm_table_1.txt")
-write.csv(out.summary, file="../example/projects/table_2.csv")
+capture.output(lm.summary.1, file="projects/lm_table_1.txt")
+write.csv(out.summary, file="projects/table_2.csv")
 
 ### use the defined function
 val <- myfunc(exp(1))
@@ -72,14 +72,14 @@ val <- myfunc(exp(1))
 ### Here's another random, unused package
 library('txtplot')
 
-png('../example/projects/fig1_biplot.png')
+png('projects/fig1_biplot.png')
 plot(data.16[,1:2])
 dev.off()
 
-png('../example/projects/fig1_biplot_t2.png')
+png('projects/fig1_biplot_t2.png')
 plot(data.16[,1:2]*2)
 dev.off()
 
-png('../example/projects/fig2_biplot.png')
+png('projects/fig2_biplot.png')
 plot(data.16[,2:3])
 dev.off()
