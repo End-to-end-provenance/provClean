@@ -34,8 +34,6 @@
 #' @export write.code
 #' @author Matthew K. Lau
 #' @examples
-#'  data(prov_json)
-#'  options(prov.json = prov_json)
 #'  some.code <- c("x <- 1", "y <- x + 1")
 #'  write.code(some.code) # copies to clipboard by default
 
